@@ -1,0 +1,110 @@
+.button {
+  display: block;
+  border-radius: 5px;
+  color: var(--themed-fg, var(--background));
+  background: var(--themed-bg, var(--foreground));
+  border: 1px solid var(--themed-border, var(--foreground));
+  font-weight: 500;
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-property: border-color, background, color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  font-size: 0.875rem;
+  height: 40px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button[disabled] {
+  background: var(--accents-1);
+  color: var(--accents-3);
+  border-color: var(--accents-2);
+  cursor: not-allowed;
+}
+
+.loading {
+  margin-right: 8px;
+}
+
+.loading span {
+  background-color: var(--accents-3);
+}
+
+/** Type **/
+
+.secondary {
+  --themed-bg: var(--background);
+  --themed-fg: var(--secondary);
+  --themed-border: var(--accents-2);
+}
+
+.success {
+  --themed-fg: #fff;
+  --themed-bg: var(--success);
+  --themed-border: var(--success);
+}
+
+.error {
+  --themed-fg: #fff;
+  --themed-bg: var(--error);
+  --themed-border: var(--error);
+}
+
+/** Size **/
+
+.small {
+  height: 32px;
+  font-size: 0.875rem;
+}
+
+.large {
+  height: 48px;
+  font-size: 1rem;
+}
+
+/** Variants **/
+
+.invert:not([disabled]):hover {
+  background: transparent;
+  color: var(--themed-bg, var(--foreground));
+}
+
+.invert:not([disabled]):active {
+  background: var(--accents-2);
+}
+
+.invert:not([disabled]).secondary:hover {
+  color: var(--foreground);
+  border-color: var(--foreground);
+}
+
+.ghost {
+  background: none;
+  border-color: transparent;
+  color: var(--themed-bg);
+  --lighten-color: hsla(0, 0%, 100%, 0.8);
+  background-image: linear-gradient(
+    to right,
+    var(--lighten-color),
+    var(--lighten-color)
+  );
+}
+
+[data-theme='dark'] .ghost {
+  --lighten-color: rgba(0, 0, 0, 0.75);
+}
+
+.ghost:not([disabled]):hover {
+  background-color: var(--themed-bg, var(--accents-4));
+}
+
+.ghost:not([disabled]):focus {
+  --lighten-color: hsla(0, 0%, 100%, 0.7);
+}
+
+[data-theme='dark'] .ghost:not([disabled]):focus {
+  --lighten-color: rgba(0, 0, 0, 0.7);
+}
