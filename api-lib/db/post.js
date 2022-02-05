@@ -59,3 +59,42 @@ export async function insertPost(db, { content, creatorId }) {
   post._id = insertedId;
   return post;
 }
+
+
+export async function searchPosts(db, searchParams) {
+  console.log("searchParams", searchParams);
+
+  if(searchParams){
+  const posts = await db
+    .collection('posts')
+    .aggregate([
+      {
+        $search: {
+          index: "default",
+          autocomplete: {
+            query: searchParams,
+            path: "content",
+            fuzzy: {
+              maxEdits: 1,
+            },
+            tokenOrder: "sequential",
+          },
+        },
+      },
+      {
+        $project: {
+          searchName: 1,
+          _id: 1,
+          content: 1,
+          score: { $meta: "searchScore" },
+        },
+      },
+      {
+        $limit: 10,
+      },
+    ])
+    .toArray();
+  if (!posts) return null;
+  return posts;
+}
+}

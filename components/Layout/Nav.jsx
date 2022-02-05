@@ -54,6 +54,9 @@ const UserMenu = ({ user, mutate }) => {
     }
   }, [mutate]);
 
+
+
+
   return (
     <div className={styles.user}>
       <button
@@ -96,7 +99,30 @@ const UserMenu = ({ user, mutate }) => {
 
 const Nav = () => {
   const { data: { user } = {}, mutate } = useCurrentUser();
-
+  const contentRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+  const searchPost = useCallback(
+    async (e) => {
+      e.preventDefault();
+      try {
+        setIsLoading(true);
+      let response=  await fetcher('/api/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: contentRef.current.value }),
+        });
+        console.log('response',response);
+        contentRef.current.value = '';
+        // refresh post lists
+        mutate();
+      } catch (e) {
+        toast.error(e.message);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [mutate]
+  );
   return (
     <nav className={styles.nav}>
       <Wrapper className={styles.wrapper}>
@@ -109,6 +135,16 @@ const Nav = () => {
             <a className={styles.logo}>M-dev</a>
           </Link>
           <Container>
+          <Container
+          className={styles.content}
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <form onSubmit={searchPost}>
+      <input   ref={contentRef} />
+      <button >search</button>
+      </form>
+      </Container>
             {user ? (
               <>
                 <UserMenu user={user} mutate={mutate} />
