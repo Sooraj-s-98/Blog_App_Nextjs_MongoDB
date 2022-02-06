@@ -7,11 +7,8 @@ import { usePostPages } from '@/lib/post';
 import Link from 'next/link';
 import styles from './SearchList.module.css';
 
-const SearchList = () => {
+const SearchList = ({posts}) => {
   const { data, size, setSize, isLoadingMore, isReachingEnd } = usePostPages();
-  const posts = data
-    ? data.reduce((acc, val) => [...acc, ...val.posts], [])
-    : [];
 
   return (
     <div className={styles.root}>

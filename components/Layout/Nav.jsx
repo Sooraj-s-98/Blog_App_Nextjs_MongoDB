@@ -105,7 +105,10 @@ const Nav = () => {
   const { data: { user } = {}, mutate } = useCurrentUser();
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
-  const searchPost = async(e)=>{
+  const searchPost = async(e, value, reason)=>{
+    if(reason  === "clear"){
+      Router.push(`/`) 
+    }
       try {
         setIsLoading(true);
       let response=  await fetcher('/api/search', {
@@ -121,6 +124,16 @@ const Nav = () => {
         setIsLoading(false);
       }
     }
+    setTimeout(async () => {
+      const close = await document.getElementsByClassName(
+        "MuiAutocomplete-clearIndicator"
+      )[0];
+      if(close){
+      close.addEventListener("click", () => {
+        Router.push(`/`) 
+      });
+    }
+    }, 100);
   return (
     <nav className={styles.nav}>
       <Wrapper className={styles.wrapper}>
@@ -138,7 +151,6 @@ const Nav = () => {
           freeSolo
           filterOptions={(x) => x}
           onChange={(e) =>{
-            console.log('eAutocomplete',e.target.innerText);
              Router.push(`/search/${e.target.innerText}`) 
             }} 
           options={options ? options.map((obj) => obj.content) : []}

@@ -1,28 +1,44 @@
-import {  searchPosts } from '@/api-lib/db';
+import { searchPosts } from '@/api-lib/db';
 import { database } from '@/api-lib/middlewares';
 import nc from 'next-connect';
 import { Search } from '@/page-components/Search';
-export default function UserPostPage({posts}) {
+export default function UserPostPage({ posts, searchValue }) {
 
-  return (
-    <>
-        <Search  />
+    return (
+        <>
+            <h2 style={{
+                display: "flex",
+                alignContent: "center",
+                justifyContent: "center", paddingTop: "1rem"
+            }}>Search Result for "{searchValue}"</h2>
+            <Search posts={posts} />
 
-    </>
-  );
+        </>
+    );
 }
 
 export async function getServerSideProps(context) {
     await nc().use(database).run(context.req, context.res);
+
+    if(context.params.searchValue === "undefined"){
+        return {
+            redirect: {
+              destination: `/`,
+              permanent: false,
+            },
+          };
+    }
     const posts = await searchPosts(context.req.db, context.params.searchValue);
     if (!posts) {
-      return {
-        notFound: true,
-      };
+        return {
+            notFound: true,
+        };
     }
-    console.log("posts server", posts);
 
     return {
-        props: { posts : JSON.parse(JSON.stringify(posts)) }
-      }
+        props: {
+            posts: JSON.parse(JSON.stringify(posts)),
+            searchValue: context.params.searchValue
+        }
+    }
 }
