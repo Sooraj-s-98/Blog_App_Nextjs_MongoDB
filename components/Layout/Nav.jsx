@@ -100,13 +100,12 @@ const UserMenu = ({ user, mutate }) => {
 };
 
 const Nav = () => {
+  const Router = useRouter()
+
   const { data: { user } = {}, mutate } = useCurrentUser();
-  const contentRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
   const [options, setOptions] = useState([]);
   const searchPost = async(e)=>{
-    console.log("searchValue",searchValue);
       try {
         setIsLoading(true);
       let response=  await fetcher('/api/search', {
@@ -138,7 +137,10 @@ const Nav = () => {
           <Autocomplete
           freeSolo
           filterOptions={(x) => x}
-          onChange={(e) => setSearchValue(e.target.innerText)}
+          onChange={(e) =>{
+            console.log('eAutocomplete',e.target.innerText);
+             Router.push(`/search/${e.target.innerText}`) 
+            }} 
           options={options ? options.map((obj) => obj.content) : []}
           renderInput={(params) => (
             <TextField
