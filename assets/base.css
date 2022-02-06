@@ -53,3 +53,12 @@ body {
   color: var(--foreground);
   background-color: var(--background);
 }
+
+.MuiAutocomplete-root{
+  width: 700px;
+}
+.MuiAutocomplete-input{
+  height: 8px;
+  padding: 2px;
+  color: var( --accents-8);
+}

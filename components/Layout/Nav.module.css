@@ -4,8 +4,9 @@
   top: 0;
   left: 0;
   width: 100%;
+  height:70px;
   z-index: 10;
-  background-color: black;
+  background-color: var(--background);
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   backdrop-filter: saturate(180%) blur(5px);
 }
