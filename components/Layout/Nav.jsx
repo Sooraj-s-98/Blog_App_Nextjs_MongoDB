@@ -11,6 +11,8 @@ import Container from './Container';
 import styles from './Nav.module.css';
 import Spacer from './Spacer';
 import Wrapper from './Wrapper';
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const UserMenu = ({ user, mutate }) => {
   const menuRef = useRef();
@@ -101,28 +103,25 @@ const Nav = () => {
   const { data: { user } = {}, mutate } = useCurrentUser();
   const contentRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
-  const searchPost = useCallback(
-    async (e) => {
-      e.preventDefault();
+  const [searchValue, setSearchValue] = useState('');
+  const [options, setOptions] = useState([]);
+  const searchPost = async(e)=>{
+    console.log("searchValue",searchValue);
       try {
         setIsLoading(true);
       let response=  await fetcher('/api/search', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ content: contentRef.current.value }),
+          body: JSON.stringify({ content: e.target.value }),
         });
         console.log('response',response);
-        contentRef.current.value = '';
-        // refresh post lists
-        mutate();
+        setOptions(response.post);
       } catch (e) {
-        toast.error(e.message);
+     
       } finally {
         setIsLoading(false);
       }
-    },
-    [mutate]
-  );
+    }
   return (
     <nav className={styles.nav}>
       <Wrapper className={styles.wrapper}>
@@ -135,7 +134,21 @@ const Nav = () => {
             <a className={styles.logo}>M-dev</a>
           </Link>
           <Container>
-          <Container
+     
+          <Autocomplete
+          freeSolo
+          filterOptions={(x) => x}
+          onChange={(e) => setSearchValue(e.target.innerText)}
+          options={options ? options.map((obj) => obj.content) : []}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Search "
+              onChange={(e) => searchPost(e)}
+            />
+          )}
+        />
+          {/* <Container
           className={styles.content}
           alignItems="center"
           justifyContent="space-between"
@@ -144,7 +157,7 @@ const Nav = () => {
       <input   ref={contentRef} />
       <button >search</button>
       </form>
-      </Container>
+      </Container> */}
             {user ? (
               <>
                 <UserMenu user={user} mutate={mutate} />
