@@ -68,6 +68,7 @@ export async function searchPosts(db, searchParams) {
   const posts = await db
     .collection('posts')
     .aggregate([
+
       {
         $search: {
           index: "default",
@@ -83,12 +84,23 @@ export async function searchPosts(db, searchParams) {
       },
       {
         $project: {
-          searchName: 1,
           _id: 1,
           content: 1,
+          creatorId: 1,
+          createdAt: 1,
           score: { $meta: "searchScore" },
         },
       },
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'creatorId',
+          foreignField: '_id',
+          as: 'creator',
+        },
+      },
+      { $unwind: '$creator' },
+      { $project: dbProjectionUsers('creator.') },
       {
         $limit: 10,
       },

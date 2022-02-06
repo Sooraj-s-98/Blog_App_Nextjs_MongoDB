@@ -100,13 +100,15 @@ const UserMenu = ({ user, mutate }) => {
 };
 
 const Nav = () => {
+  const Router = useRouter()
+
   const { data: { user } = {}, mutate } = useCurrentUser();
-  const contentRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
   const [options, setOptions] = useState([]);
-  const searchPost = async(e)=>{
-    console.log("searchValue",searchValue);
+  const searchPost = async(e, value, reason)=>{
+    if(reason  === "clear"){
+      Router.push(`/`) 
+    }
       try {
         setIsLoading(true);
       let response=  await fetcher('/api/search', {
@@ -122,6 +124,16 @@ const Nav = () => {
         setIsLoading(false);
       }
     }
+    setTimeout(async () => {
+      const close = await document.getElementsByClassName(
+        "MuiAutocomplete-clearIndicator"
+      )[0];
+      if(close){
+      close.addEventListener("click", () => {
+        Router.push(`/`) 
+      });
+    }
+    }, 100);
   return (
     <nav className={styles.nav}>
       <Wrapper className={styles.wrapper}>
@@ -138,7 +150,9 @@ const Nav = () => {
           <Autocomplete
           freeSolo
           filterOptions={(x) => x}
-          onChange={(e) => setSearchValue(e.target.innerText)}
+          onChange={(e) =>{
+             Router.push(`/search/${e.target.innerText}`) 
+            }} 
           options={options ? options.map((obj) => obj.content) : []}
           renderInput={(params) => (
             <TextField
