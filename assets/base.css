@@ -57,6 +57,12 @@ body {
 .MuiAutocomplete-root{
   width: 700px;
 }
+
+@media only screen and (max-width: 600px) {
+  .MuiAutocomplete-root{
+    width: 180px;
+  }
+}
 .MuiAutocomplete-input{
   height: 8px;
   padding: 2px;
