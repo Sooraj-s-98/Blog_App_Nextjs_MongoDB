@@ -80,15 +80,15 @@ const UserMenu = ({ user, mutate }) => {
               <a className={styles.item}>Profile</a>
             </Link>
             <Link passHref href="/settings">
-              <a className={styles.item}>Settngs</a>
+              <a className={styles.item}>Settings</a>
             </Link>
-            <div className={styles.item} style={{ cursor: 'auto' }}>
+            {/* <div className={styles.item} style={{ cursor: 'auto' }}>
               <Container alignItems="center">
                 <span>Theme</span>
                 <Spacer size={0.5} axis="horizontal" />
                 <ThemeSwitcher />
               </Container>
-            </div>
+            </div> */}
             <button onClick={onSignOut} className={styles.item}>
               Sign out
             </button>
