@@ -25,7 +25,7 @@ const SearchList = ({posts}) => {
             </div>
           </Link>
         ))}
-        <Container justifyContent="center">
+        {/* <Container justifyContent="center">
           {isReachingEnd ? (
             <Text color="secondary">No more posts are found</Text>
           ) : (
@@ -38,7 +38,7 @@ const SearchList = ({posts}) => {
               Load more
             </Button>
           )}
-        </Container>
+        </Container> */}
       </Wrapper>
     </div>
   );

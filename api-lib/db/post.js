@@ -101,9 +101,6 @@ export async function searchPosts(db, searchParams) {
       },
       { $unwind: '$creator' },
       { $project: dbProjectionUsers('creator.') },
-      {
-        $limit: 10,
-      },
     ])
     .toArray();
   if (!posts) return null;
