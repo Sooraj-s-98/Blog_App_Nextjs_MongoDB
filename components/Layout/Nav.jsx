@@ -101,16 +101,14 @@ const UserMenu = ({ user, mutate }) => {
 
 const Nav = () => {
   const Router = useRouter()
-
+  const contentRef = useRef();
   const { data: { user } = {}, mutate } = useCurrentUser();
-  const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
+
   const searchPost = async(e, value, reason)=>{
-    if(reason  === "clear"){
-      Router.push(`/`) 
-    }
+
       try {
-        setIsLoading(true);
+  
       let response=  await fetcher('/api/search', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -121,7 +119,7 @@ const Nav = () => {
       } catch (e) {
      
       } finally {
-        setIsLoading(false);
+   
       }
     }
     setTimeout(async () => {
@@ -134,6 +132,8 @@ const Nav = () => {
       });
     }
     }, 100);
+
+
   return (
     <nav className={styles.nav}>
       <Wrapper className={styles.wrapper}>
@@ -149,16 +149,21 @@ const Nav = () => {
      
           <Autocomplete
           freeSolo
-          filterOptions={(x) => x}
+          disableClearable
           onChange={(e) =>{
-             Router.push(`/search/${e.target.innerText}`) 
+             Router.push(`/search/${contentRef.current.value}`) 
             }} 
           options={options ? options.map((obj) => obj.content) : []}
           renderInput={(params) => (
             <TextField
               {...params}
               label="Search "
+              inputRef={contentRef}
               onChange={(e) => searchPost(e)}
+              InputProps={{
+                ...params.InputProps,
+                type: 'search',
+              }}
             />
           )}
         />
