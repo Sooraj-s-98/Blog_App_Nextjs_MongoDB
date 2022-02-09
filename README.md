@@ -1,6 +1,18 @@
-[![Next.js](https://assets.zeit.co/image/upload/v1538361091/repositories/next-js/next-js.png)](https://nextjs.org)
+
 
 <h1 align="center"> Blog App ❤️(Next.js + MongoDB)</h1></h1>
+
+
+<div align="center">
+
+:rocket: [Check out the demo](https://m-dev-tau.vercel.app/) :rocket:
+  
+  </div>
+<h3 align="start">Add MongoDB Atlas Search</h3>
+
+Add MongoDB atlas index search  See [this](https://docs.atlas.mongodb.com/atlas-search/).
+![mongosea](https://user-images.githubusercontent.com/52352285/153125339-46e3238f-5c19-4feb-8f64-4d6af850443e.png)
+
 
 
 <h3 align="start">Environmental variables</h3>
