@@ -35,21 +35,3 @@ This project can be deployed [anywhere Next.js can be deployed](https://nextjs.o
 After building using `npm run build`, simply start the server using `npm run start`.
 
 You can also deploy this with serverless providers given the correct setup.
-
-<h2 align="start">Contributing</h2>
-
-<div align="start">
-  
-Please see my [contributing.md](CONTRIBUTING.md).
-
-</div>
-
-<h2 align="start">
-  License
-</h2>
-
-<div align="start">
-  
-  [MIT](LICENSE)
-  
-</div>
