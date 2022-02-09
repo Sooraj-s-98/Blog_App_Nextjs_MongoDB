@@ -20,7 +20,7 @@ export default function UserPostPage({ posts, searchValue }) {
 export async function getServerSideProps(context) {
     await nc().use(database).run(context.req, context.res);
 
-    if(context.params.searchValue === "undefined"){
+    if(context.params.searchValue === "undefined" || context.params.searchValue === ""){
         return {
             redirect: {
               destination: `/`,

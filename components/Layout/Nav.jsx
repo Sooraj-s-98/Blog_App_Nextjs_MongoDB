@@ -106,7 +106,7 @@ const Nav = () => {
   const [options, setOptions] = useState([]);
 
   const searchPost = async(e, value, reason)=>{
-
+if(e.target.value!==""){
       try {
   
       let response=  await fetcher('/api/search', {
@@ -121,6 +121,7 @@ const Nav = () => {
       } finally {
    
       }
+    }
     }
     setTimeout(async () => {
       const close = await document.getElementsByClassName(
@@ -150,8 +151,8 @@ const Nav = () => {
           <Autocomplete
           freeSolo
           disableClearable
-          onChange={(e) =>{
-             Router.push(`/search/${contentRef.current.value}`) 
+          onChange={(event, value) =>{
+            Router.push(`/search/${value}`) 
             }} 
           options={options ? options.map((obj) => obj.content) : []}
           renderInput={(params) => (
