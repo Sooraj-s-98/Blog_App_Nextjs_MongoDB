@@ -35,3 +35,42 @@ This project can be deployed [anywhere Next.js can be deployed](https://nextjs.o
 After building using `npm run build`, simply start the server using `npm run start`.
 
 You can also deploy this with serverless providers given the correct setup.
+
+
+<h2 align="start">Guide</h2>
+
+<h3 align="start">:lock: Authentication and Account</h3>
+
+<div align="start">
+
+- [x] Session-based authentication ([Passport.js](https://github.com/jaredhanson/passport))
+- [x] Sign up/Log in/Sign out API
+- [x] Authentication via email/password
+- [ ] Authentication via OAuth (Google, Facebook, etc.)
+- [x] Email verification
+- [x] Password change
+- [x] Password reset via email
+
+</div>
+
+<h3 align="start">:woman::man: Profile</h3>
+
+<div align="start">
+
+- [x] Profile picture, username, name, bio, email
+- [x] Update user profile
+
+</div>
+
+<h3 align="start">:eyes: Social</h3>
+
+<div align="start">
+
+- [x] View others' profiles
+- [x] Posts and comments
+- [x] Search posts
+
+</div>
+
+
+
