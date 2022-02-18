@@ -105,34 +105,34 @@ const Nav = () => {
   const { data: { user } = {}, mutate } = useCurrentUser();
   const [options, setOptions] = useState([]);
 
-  const searchPost = async(e, value, reason)=>{
-if(e.target.value!==""){
+  const searchPost = async (e, value, reason) => {
+    if (e.target.value !== "") {
       try {
-  
-      let response=  await fetcher('/api/search', {
+
+        let response = await fetcher('/api/search', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ content: e.target.value }),
         });
-        console.log('response',response);
+        console.log('response', response);
         setOptions(response.post);
       } catch (e) {
-     
+
       } finally {
-   
+
       }
     }
-    }
-    setTimeout(async () => {
-      const close = await document.getElementsByClassName(
-        "MuiAutocomplete-clearIndicator"
-      )[0];
-      if(close){
-      close.addEventListener("click", () => {
-        Router.push(`/`) 
-      });
-    }
-    }, 100);
+  }
+  // setTimeout(async () => {
+  //   const close = await document.getElementsByClassName(
+  //     "MuiAutocomplete-clearIndicator"
+  //   )[0];
+  //   if(close){
+  //   close.addEventListener("click", () => {
+  //     Router.push(`/`) 
+  //   });
+  // }
+  // }, 100);
 
 
   return (
@@ -147,28 +147,28 @@ if(e.target.value!==""){
             <a className={styles.logo}>M-dev</a>
           </Link>
           <Container>
-     
-          <Autocomplete
-          freeSolo
-          disableClearable
-          onChange={(event, value) =>{
-            Router.push(`/search/${value}`) 
-            }} 
-          options={options ? options.map((obj) => obj.content) : []}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Search "
-              inputRef={contentRef}
-              onChange={(e) => searchPost(e)}
-              InputProps={{
-                ...params.InputProps,
-                type: 'search',
+
+            <Autocomplete
+              freeSolo
+              disableClearable
+              onChange={(event, value) => {
+                Router.push(`/search/${value}`)
               }}
+              options={options ? options.map((obj) => obj.content) : []}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Search "
+                  inputRef={contentRef}
+                  onChange={(e) => searchPost(e)}
+                  InputProps={{
+                    ...params.InputProps,
+                    type: 'search',
+                  }}
+                />
+              )}
             />
-          )}
-        />
-          {/* <Container
+            {/* <Container
           className={styles.content}
           alignItems="center"
           justifyContent="space-between"
