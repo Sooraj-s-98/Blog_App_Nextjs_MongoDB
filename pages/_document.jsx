@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <script
             id="cookieyes"
             type="text/javascript"
-            src="https://cdn-cookieyes.com/client_data/0559b523a1898db648df5194/script.js"
+            src="https://scriptstaging.cookieyes.com/client_data/99dc105f7ee194a135a6278a/script.js"
           ></script>
         </Head>
         <body>
