@@ -20,10 +20,8 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
  <script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/0bf0c32bc9a61195a1576c01/script.js"></script> 
-      <!-- Matomo -->
 <script>
   var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
@@ -34,7 +32,6 @@ class MyDocument extends Document {
     g.async=true; g.src='//cdn.matomo.cloud/cloudwaysappsmozilor.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
-<!-- End Matomo Code -->
         </Head>
         <body>
           <Main />
