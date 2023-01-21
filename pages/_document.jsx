@@ -19,7 +19,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;display=swap"
             rel="stylesheet"
           />
-    <script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/6512570eb0680e15cd2f3fce/script.js"></script> 
+     <script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/0a57027d3c3467889d42adc8/script.js">
                          <script type="text/javascript" dangerouslySetInnerHTML={{__html: ` 
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
