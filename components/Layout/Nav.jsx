@@ -13,6 +13,7 @@ import Spacer from './Spacer';
 import Wrapper from './Wrapper';
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import mixpanel from 'mixpanel-browser';
 
 const UserMenu = ({ user, mutate }) => {
   const menuRef = useRef();
@@ -22,6 +23,7 @@ const UserMenu = ({ user, mutate }) => {
 
   const router = useRouter();
   useEffect(() => {
+    mixpanel.init('84bf49a6811632b4257b5f43feb7a6d6', {debug: true}); 
     const onRouteChangeComplete = () => setVisible(false);
     router.events.on('routeChangeComplete', onRouteChangeComplete);
     return () =>
