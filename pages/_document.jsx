@@ -19,7 +19,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;display=swap"
             rel="stylesheet"
           />
-    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/516c7a10c8931d8fca530989/script.js"></script>
+          <script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/f85428d705ecc526a805e766/script.js"></script>
 
           <script
             type="text/javascript"
