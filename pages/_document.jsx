@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,6 +11,8 @@ class MyDocument extends Document {
     return (
       <Html >
         <Head>
+
+          <Script strategy="beforeInteractive"  src="https://scriptstaging.cookieyes.com/client_data/c9bec4e3065277f2d04139fc/script.js" />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
@@ -19,7 +22,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;display=swap"
             rel="stylesheet"
           />
-       <script id="cookieyes" type="text/javascript" src="https://scriptstaging.cookieyes.com/client_data/c9bec4e3065277f2d04139fc/script.js"></script>
 
           <script
             type="text/javascript"
