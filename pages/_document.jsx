@@ -12,7 +12,7 @@ class MyDocument extends Document {
       <Html >
         <Head>
 
-          <Script strategy="beforeInteractive"  src="https://scriptstaging.cookieyes.com/client_data/c9bec4e3065277f2d04139fc/script.js" />
+          <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/ec3a782d100754dd16fa4c45/script.js"></script> 
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
