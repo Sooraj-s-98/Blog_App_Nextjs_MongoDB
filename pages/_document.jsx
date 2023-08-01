@@ -11,7 +11,7 @@ class MyDocument extends Document {
     return (
       <Html >
         <Head>
-	<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/b72ddc35b16c551c0500b6d2/script.js"></script>
+		<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/be2ad3c3e7cd69449824f0ae/script.js"></script>
         </Head>
         <body>
           <Main />
