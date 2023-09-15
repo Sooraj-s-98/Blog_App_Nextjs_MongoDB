@@ -9,9 +9,9 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html >
+      <Html lang="de-De" >
         <Head>
-       	<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/69585093a55732e7cf75d755/script.js"></script>
+     	<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/b6ea7d10b07343e59f8870af/script.js"></script>
         </Head>
         <body>
           <Main />
